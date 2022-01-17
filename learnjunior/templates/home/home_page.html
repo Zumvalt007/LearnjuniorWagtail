@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container-fluid"> 
+    {% if request.user.is_authenticated %}
+        <h1>Welcome to Learn Junior </h1> <h1>{{request.user}}</h1>
+        <p>Learn to be Top of the Class</p>
+    {% else %}
+        <h1>Welcome to Learn Junior</h1>
+        <p>please <a href="{% url 'account_login' %}">Sign in</a> to find more content</p>
+        <p>Learn to be Top of the Class</p>
+    {% endif %}
+</div>
+
+{% endblock %}
