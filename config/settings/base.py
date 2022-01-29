@@ -41,9 +41,22 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+# DATABASES = {
+#     "default": env.db("DATABASE_URL", default="postgres:///learnjunior"),
+# }
+
+
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///learnjunior"),
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'learnjunior',
+    'USER': 'learnjunior',
+    'PASSWORD': 'uO$niA7n^orh',
+    'HOST': 'learnjunior.ckz7kd8h0ay0.us-east-2.rds.amazonaws.com',
+    'PORT': '5432',
+    }
 }
+
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -294,8 +307,6 @@ ACCOUNT_ADAPTER = "learnjunior.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "learnjunior.users.adapters.SocialAccountAdapter"
 
-
-WAGTAIL_FRONTEND_LOGIN_URL = LOGIN_URL
 
 # Your stuff...
 WAGTAIL_SITE_NAME = "learnjunior"

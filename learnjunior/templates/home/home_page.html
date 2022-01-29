@@ -12,6 +12,7 @@
     {% if request.user.is_authenticated %}
         <h1>Welcome to Learn Junior </h1> <h1>{{request.user}}</h1>
         <p>Learn to be Top of the Class</p>
+        <a href="{% url 'wagtail_serve' '' %}">Enter Course</a>
     {% else %}
         <h1>Welcome to Learn Junior</h1>
         <p>please <a href="{% url 'account_login' %}">Sign in</a> to find more content</p>

@@ -14,8 +14,8 @@ from django.urls import reverse
 from config.settings.base import LOGIN_REDIRECT_URL, LOGIN_URL
 from learnjunior.search import views as search_views
 
-def redirect_to_my_auth(request):
-    return redirect_to_login('cms', login_url= LOGIN_URL)
+# def redirect_to_my_auth(request):
+#     return redirect_to_login('cms', login_url= LOGIN_URL)
 
 
 urlpatterns = [
@@ -33,7 +33,7 @@ urlpatterns = [
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail’s page serving mechanism. This should be the last pattern in
     # the list:
-    path('cms/login', redirect_to_my_auth, name='wagtail_serve'),
+    # path('cms/login', redirect_to_my_auth, name='wagtail_serve'),
     path("cms", include(wagtail_urls)),
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:

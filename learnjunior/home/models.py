@@ -1,17 +1,12 @@
-from re import template
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import models
 from django.conf import settings
-from django.db.models.base import Model
-from django.db.models.deletion import CASCADE
-from django.views.generic.detail import DetailView
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.search import index
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailstreamforms.blocks import WagtailFormBlock
 from django.utils.translation import ugettext_lazy as _
 from wagtail.core import hooks
@@ -20,7 +15,6 @@ from django.shortcuts import redirect
 from wagtailstreamforms.utils.requests import get_form_instance_from_request
 from django.template.response import TemplateResponse
 
-from wagtailstreamforms.models import FormSubmissionFile
 from wagtailstreamforms.serializers import FormSubmissionSerializer
 
 import json
@@ -52,6 +46,7 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('intro'),
+        
         StreamFieldPanel('body', classname="full"),
     ]
 
@@ -74,6 +69,7 @@ class QuizPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('intro'),
+        # ImageChooserPanel('image'),
         StreamFieldPanel('body', classname="full"),
     ]
 
